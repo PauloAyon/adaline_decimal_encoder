@@ -8,8 +8,8 @@ calculates an output, compares it with the target value, and updates the
 weights and bias to reduce the error.
 
 After training, the program prints the final parameters and the final MSE for
-each experiment. It also displays a graph that shows the error during the
-training process.
+each experiment. It also displays a convergence curve and compares the
+predicted decimal values from both experiments with the targets.
 
 ## Requirements
 
@@ -28,6 +28,21 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
+
+## Results
+
+The convergence plot is saved in the `outputs/` folder. The terminal screenshot
+below shows an example run.
+
+The plot shows the MSE convergence of both experiments and their decoded
+predictions compared with the target values.
+
+![Convergence and binary-to-decimal results](outputs/convergence.png)
+
+The terminal output shows the final parameters, MSE, and predictions for both
+experiments.
+
+![Terminal results for both experiments](outputs/terminal_results.png)
 
 ## Project Files
 

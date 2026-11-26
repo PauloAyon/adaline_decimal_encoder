@@ -51,6 +51,10 @@ class Adaline:
             for point in X
         ])
 
+    def predict_rounded(self, X):
+        # Decode the continuous output back to the nearest integer decimal.
+        return np.round(self.predict(X)).astype(int)
+
     def update_parameters(self, x1, x2, x3, target, output):
         # Apply the delta rule using the continuous error.
         error = target - output

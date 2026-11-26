@@ -51,12 +51,26 @@ def print_results(results):
         print(f"  final MSE = {mse_values[-1]:.10f}")
 
 
+def show_encoding(X, y, results):
+    # Show that the ADALINE learns the binary-to-decimal encoding.
+    print("\n  Binary to Decimal Encoding  ")
+    for name, adaline in results:
+        print(f"\n{name}:")
+        print(f"  {'Binary':<12} {'Target':<8} {'Output':<12} {'Decoded':<10}")
+        raw = adaline.predict(X)
+        decoded = adaline.predict_rounded(X)
+        for i in range(len(X)):
+            binary_str = ''.join(str(int(b)) for b in X[i])
+            print(f"  {binary_str:<12} {y[i]:<8} {raw[i]:<12.4f} {decoded[i]:<10}")
+
+
 def main():
     X, y = get_data()
     results = run_experiments(X, y)
 
     print_results(results)
-    plot_mse_history(results)
+    show_encoding(X, y, results)
+    plot_mse_history(results, X, y)
 
 
 if __name__ == "__main__":
